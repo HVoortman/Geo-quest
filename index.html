@@ -4,18 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geo Quest</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
+    <style>
+        #admin-panel { display: none; border: 1px solid #ccc; padding: 10px; margin-top: 10px; }
+    </style>
 </head>
 <body>
     <h1>Geo Quest</h1>
-    <p>Follow the arrow to your next location!</p>
-    <div id="arrow">⬆️</div>
-    <p id="distance">Distance: --</p>
+    <button onclick="showAdminPanel()">Admin</button>
+    <div id="game">
+        <p id="distance">Distance: --</p>
+        <div id="arrow" style="width: 50px; height: 50px; background: red; transform: rotate(0deg);"></div>
+    </div>
+    
     <div id="question-box" style="display: none;">
         <p id="question-text"></p>
         <input type="text" id="answer-input" placeholder="Your answer">
-        <button onclick="checkAnswer()">Submit</button>
+        <div id="mcq-options"></div>
+        <button onclick="checkAnswer(document.getElementById('answer-input').value)">Submit</button>
     </div>
+    
+    <div id="admin-panel">
+        <h3>Admin Settings</h3>
+        <label>Latitude: <input type="number" id="lat"></label><br>
+        <label>Longitude: <input type="number" id="lon"></label><br>
+        <label>Radius (meters): <input type="number" id="radius"></label><br>
+        <label>Question: <input type="text" id="question"></label><br>
+        <label>Answer: <input type="text" id="answer"></label><br>
+        <label><input type="checkbox" id="mcq"> Multiple Choice</label><br>
+        <label>Options (comma-separated): <input type="text" id="options"></label><br>
+        <button onclick="saveLocation()">Save Location</button>
+        <button onclick="generateGameLink()">Generate Game Link</button>
+    </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>
