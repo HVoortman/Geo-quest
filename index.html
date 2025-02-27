@@ -32,6 +32,12 @@
             top: 60px;
             right: 20px;
         }
+        #arrow-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
         #arrow {
             width: 150px;
             height: 150px;
@@ -39,11 +45,19 @@
             background-size: contain;
             transform: rotate(0deg);
         }
+        #distance {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <button id="admin-button" class="btn blue" onclick="showAdminPanel()">Admin</button>
-    <div id="arrow"></div>
+    
+    <div id="arrow-container">
+        <div id="arrow"></div>
+        <p id="distance">Distance: --</p>
+    </div>
     
     <div id="admin-panel" class="card-panel">
         <h5>Admin Settings</h5>
