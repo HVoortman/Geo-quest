@@ -38,13 +38,13 @@
         #arrow::after {
             content: '';
             position: absolute;
-            top: 20px;
-            left: -35px;
+            top: 30px;
+            left: -25px;
             width: 0;
             height: 0;
-            border-left: 35px solid transparent;
-            border-right: 35px solid transparent;
-            border-bottom: 70px solid white;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 50px solid red; /* Make the tip stand out */
         }
         #distance {
             font-size: 1.5em;
@@ -65,7 +65,7 @@
         ];
         
         function getDistance(lat1, lon1, lat2, lon2) {
-            const R = 6371000; // Radius of Earth in meters
+            const R = 6371000;
             const dLat = (lat2 - lat1) * Math.PI / 180;
             const dLon = (lon2 - lon1) * Math.PI / 180;
             const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
@@ -137,4 +137,3 @@
     </script>
 </body>
 </html>
-
