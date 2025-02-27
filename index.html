@@ -32,6 +32,8 @@
             border-right: 50px solid transparent;
             border-bottom: 100px solid black;
             position: relative;
+            transform-origin: 50% 100%;
+            transition: transform 0.2s linear;
         }
         #arrow::after {
             content: '';
@@ -73,6 +75,13 @@
             return R * c;
         }
 
+        function getBearing(lat1, lon1, lat2, lon2) {
+            const y = Math.sin(lon2 - lon1) * Math.cos(lat2);
+            const x = Math.cos(lat1) * Math.sin(lat2) -
+                      Math.sin(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1);
+            return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+        }
+
         function askQuestion(location) {
             if (location.type === "open") {
                 prompt(location.question);
@@ -104,6 +113,12 @@
             if (closestLocation && minDistance <= closestLocation.radius) {
                 askQuestion(closestLocation);
             }
+            
+            if (closestLocation) {
+                const bearing = getBearing(latitude * Math.PI / 180, longitude * Math.PI / 180,
+                                          closestLocation.lat * Math.PI / 180, closestLocation.lon * Math.PI / 180);
+                document.getElementById("arrow").style.transform = `rotate(${bearing}deg)`;
+            }
         }
 
         function startTracking() {
@@ -122,3 +137,4 @@
     </script>
 </body>
 </html>
+
