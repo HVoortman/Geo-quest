@@ -4,36 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geo Quest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <style>
-        #admin-panel { display: none; border: 1px solid #ccc; padding: 10px; margin-top: 10px; }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        #admin-panel {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        #arrow {
+            width: 50px;
+            height: 50px;
+            background: url('https://cdn-icons-png.flaticon.com/512/271/271228.png') no-repeat center;
+            background-size: contain;
+            transform: rotate(0deg);
+            margin-top: 20px;
+        }
+        .container {
+            text-align: center;
+        }
+        .btn {
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>Geo Quest</h1>
-    <button onclick="showAdminPanel()">Admin</button>
-    <div id="game">
-        <p id="distance">Distance: --</p>
-        <div id="arrow" style="width: 50px; height: 50px; background: red; transform: rotate(0deg);"></div>
+    <div class="container">
+        <h3>Geo Quest</h3>
+        <button class="btn blue" onclick="showAdminPanel()">Admin</button>
+        <div id="game">
+            <p id="distance">Distance: --</p>
+            <div id="arrow"></div>
+        </div>
     </div>
     
-    <div id="question-box" style="display: none;">
+    <div id="question-box" class="card-panel" style="display: none;">
         <p id="question-text"></p>
-        <input type="text" id="answer-input" placeholder="Your answer">
+        <input type="text" id="answer-input" class="input-field" placeholder="Your answer">
         <div id="mcq-options"></div>
-        <button onclick="checkAnswer(document.getElementById('answer-input').value)">Submit</button>
+        <button class="btn green" onclick="checkAnswer(document.getElementById('answer-input').value)">Submit</button>
     </div>
     
-    <div id="admin-panel">
-        <h3>Admin Settings</h3>
-        <label>Latitude: <input type="number" id="lat"></label><br>
-        <label>Longitude: <input type="number" id="lon"></label><br>
-        <label>Radius (meters): <input type="number" id="radius"></label><br>
-        <label>Question: <input type="text" id="question"></label><br>
-        <label>Answer: <input type="text" id="answer"></label><br>
-        <label><input type="checkbox" id="mcq"> Multiple Choice</label><br>
-        <label>Options (comma-separated): <input type="text" id="options"></label><br>
-        <button onclick="saveLocation()">Save Location</button>
-        <button onclick="generateGameLink()">Generate Game Link</button>
+    <div id="admin-panel" class="card-panel">
+        <h5>Admin Settings</h5>
+        <label>Latitude: <input type="number" id="lat" class="input-field"></label>
+        <label>Longitude: <input type="number" id="lon" class="input-field"></label>
+        <label>Radius (meters): <input type="number" id="radius" class="input-field"></label>
+        <label>Question: <input type="text" id="question" class="input-field"></label>
+        <label>Answer: <input type="text" id="answer" class="input-field"></label>
+        <label>
+            <input type="checkbox" id="mcq">
+            <span>Multiple Choice</span>
+        </label>
+        <label>Options (comma-separated): <input type="text" id="options" class="input-field"></label>
+        <button class="btn orange" onclick="saveLocation()">Save Location</button>
+        <button class="btn red" onclick="generateGameLink()">Generate Game Link</button>
     </div>
     
     <script src="script.js"></script>
