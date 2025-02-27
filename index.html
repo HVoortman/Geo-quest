@@ -40,13 +40,23 @@
             position: relative;
         }
         #arrow {
-            width: 100px;
-            height: 100px;
+            width: 0;
+            height: 0;
             border-left: 50px solid transparent;
             border-right: 50px solid transparent;
             border-bottom: 100px solid black;
-            transform-origin: center;
-            transform: rotate(0deg);
+            position: relative;
+        }
+        #arrow::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -35px;
+            width: 0;
+            height: 0;
+            border-left: 35px solid transparent;
+            border-right: 35px solid transparent;
+            border-bottom: 70px solid white;
         }
         #distance {
             font-size: 1.5em;
